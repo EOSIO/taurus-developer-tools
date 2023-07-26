@@ -99,7 +99,7 @@ Fill-pg running in debug mode ( --fpg-debug-mode ) will enable devs to:
 
 ### Building
 
-Currently only docker-based build is supported, to build a Docker image that will build the `fill-pg` binary, run:
+Currently only docker-based build on macOS is supported, to build a Docker image that will build the `fill-pg` binary, run:
 
 ```
 docker build .
@@ -135,12 +135,3 @@ Point your browser to http://localhost:5050 , it should login you automatically,
 2. [Configuring EOSIO-Taurus to connect to `fill-pg`.](doc/nodeos-state-history.md)
 3. [More on the debug-mode option, including examples of SQL queries.](doc/debug-mode.md)  (* feature added to work with EOSIO-Taurus for enterprise applications)
 
-## License
-
-[MIT](./LICENSE)
-
-## Important
-
-See [LICENSE](LICENSE) for copyright and license terms.
-
-All repositories and other materials are provided subject to the terms of this [IMPORTANT](https://github.com/EOSIO/taurus-node/blob/develop/IMPORTANT.md) notice and you must familiarize yourself with its terms.  The notice contains important information, limitations and restrictions relating to our software, publications, trademarks, third-party resources, and forward-looking statements.  By accessing any of our repositories and other materials, you accept and agree to the terms of the notice.

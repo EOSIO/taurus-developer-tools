@@ -21,17 +21,6 @@ Usage: ./scripts/blockchain-sandbox.sh --snapshot=[snapshot path]
 # RabbitMQ installed
 ```
 
-Or start the sandbox from the nodeos available in a docker image:
-
-```
-Usage: ./scripts/blockchain-sandbox-in-docker.sh taurus_image_path [snapshot path]
-
-# requirements:
-# docker_image points to a docker image with taurus-node built
-# with flag EOSIO_NOT_REQUIRE_FULL_VALIDATION=on when doing cmake
-# and RabbitMQ installed
-```
-
 Ports and services exposed
 - 8888: RPC port of the producer
 - 8880: rodeos_plugin port for query/wasm-ql
@@ -130,7 +119,7 @@ permissions:
 A tool to replace the key manually for a permission to be the default key (as `root@active`):
 
 ```
-$ docker exec -ti blockchain-sandbox /blockchain-sandbox/scripts/replace-key.sh -h
+$ scripts/replace-key.sh -h
 usage: Blockchain Sandbox Account Key Replacing Tool [-h] [--acct ACCT] [--perm PERM]
 
 Replace Account Keys For a Blockchain Sandbox
@@ -144,7 +133,7 @@ options:
 For example, to replace `login@login`'s key:
 
 ```
-$ docker exec -ti blockchain-sandbox /blockchain-sandbox/scripts/replace-key.sh --acct login --perm login
+$ scripts/replace-key.sh --acct login --perm login
 Replacing key for login@login ...
 
 ...

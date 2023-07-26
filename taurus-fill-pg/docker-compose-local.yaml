@@ -1,0 +1,56 @@
+# Lines left commented below are potentially useful for debugging when tests are failing
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "127.0.0.1:6543:5432"
+    expose:
+      - "5432"
+  fill-pg:
+    build: .
+    command: >
+      /bin/sh -c "
+        echo Waiting for nodeos service start...;
+        while ! nc -z host.docker.internal 8080; do
+          sleep 1;
+        done;
+        fill-pg --fpg-create --fpg-drop --fill-connect-to=host.docker.internal:8080 --fpg-debug-mode
+      "
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - PGUSER=postgres
+      - PGPASSWORD=password
+      - PGHOST=host.docker.internal
+      - PGPORT=6543
+    restart: on-failure
+    depends_on:
+      - postgres
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:latest
+    entrypoint: >
+      /bin/sh -c "
+      mkdir -p /var/lib/pgadmin/storage/postgres_postgres.com;
+      chmod 700 /var/lib/pgadmin/storage/postgres_postgres.com;
+      cp -f /pgadmin4/pgpass /var/lib/pgadmin/storage/postgres_postgres.com/pgpass;
+      chmod 0600 /var/lib/pgadmin/storage/postgres_postgres.com/pgpass;
+      chown -R pgadmin:pgadmin /var/lib/pgadmin/storage/postgres_postgres.com;
+      /entrypoint.sh
+      "
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=postgres@postgres.com
+      - PGADMIN_DEFAULT_PASSWORD=password
+      - PGADMIN_CONFIG_SERVER_MODE=False
+      - PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED=False
+    ports:
+      - "5050:80"
+    volumes:
+      - ./pg_admin_servers.json:/pgadmin4/servers.json
+      - ./pgpass.txt:/pgadmin4/pgpass
+    restart: always
+

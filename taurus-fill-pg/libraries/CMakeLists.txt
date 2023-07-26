@@ -1,0 +1,5 @@
+set(ABIEOS_BUILD_SHARED_LIB OFF)
+add_subdirectory( abieos )
+add_subdirectory( appbase )
+add_subdirectory( fc )
+add_subdirectory( libpqxx )

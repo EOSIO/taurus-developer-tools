@@ -1,0 +1,12 @@
+[submodule "taurus-fill-pg/libraries/abieos"]
+	path = taurus-fill-pg/libraries/abieos
+	url = https://github.com/EOSIO/taurus-abieos
+[submodule "taurus-fill-pg/libraries/appbase"]
+	path = taurus-fill-pg/libraries/appbase
+	url = https://github.com/EOSIO/taurus-appbase
+[submodule "taurus-fill-pg/libraries/fc"]
+	path = taurus-fill-pg/libraries/fc
+	url = https://github.com/EOSIO/fc
+[submodule "taurus-fill-pg/libraries/libpqxx"]
+	path = taurus-fill-pg/libraries/libpqxx
+	url = https://github.com/jtv/libpqxx

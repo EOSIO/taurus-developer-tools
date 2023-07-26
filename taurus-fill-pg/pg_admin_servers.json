@@ -1,0 +1,14 @@
+{
+    "Servers": {
+        "1": {
+            "Name": "fill-pg Server",
+            "Group": "fill-pg group",
+            "Port": 6543,
+            "Username": "postgres",
+            "Host": "host.docker.internal",
+            "SSLMode": "prefer",
+            "MaintenanceDB": "postgres",
+            "PassFile": "/var/lib/pgadmin/storage/postgres_postgres.com/pgpass"
+        }
+    }
+}

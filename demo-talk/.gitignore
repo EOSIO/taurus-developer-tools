@@ -1,6 +1,0 @@
-*.abi
-*.log
-*.out
-*.wasm
-dist
-node_modules
